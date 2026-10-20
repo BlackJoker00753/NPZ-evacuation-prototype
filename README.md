@@ -1,4 +1,4 @@
-# S1 · Цифровой полигон эвакуации НПЗ в остановочный ремонт
+# Цифровой полигон эвакуации НПЗ в остановочный ремонт
 
 Прототип для конкурса КМГ «Лучшие инновационные идеи и практики в области ОЗТОС». Агентная симуляция эвакуации 1 600 человек, облака H₂S или пожара и ИИ-штаба: правки ПЛА проверяются до аварии на одних и тех же людях и погоде.
 
@@ -8,7 +8,8 @@
 
 - Прототип: https://npz-evacuation-prototype.onrender.com
 - Презентация для конкурса: https://npz-evacuation-prototype.onrender.com/presentation/ (листается стрелками, F — полный экран)
-- Демо-видео (66 с, озвучка): https://npz-evacuation-prototype.onrender.com/presentation/assets/demo.mp4
+- Ролик «Идея» (1,5 мин, озвучка): https://npz-evacuation-prototype.onrender.com/presentation/assets/idea.mp4
+- Видео-инструкция (2,5 мин, все экраны): https://npz-evacuation-prototype.onrender.com/presentation/assets/guide.mp4
 
 ## Как открыть
 
@@ -51,7 +52,7 @@ node build.js
 
 ## Презентация и видео
 
-`presentation/deck.src.html` — исходник презентации; `node build.js` собирает `presentation/index.html` и копирует её в `public/presentation/`. Ролик `presentation/assets/demo.mp4` собран из живых кадров прототипа в Hyperframes, озвучка — нейросетевой голос Microsoft; план и бриф — в `brag-output/`.
+`presentation/deck.src.html` — исходник презентации; `node build.js` собирает `presentation/index.html` и копирует её в `public/presentation/`. Ролики `presentation/assets/idea.mp4` и `guide.mp4` собраны из живых кадров прототипа в Hyperframes, озвучка — нейросетевой голос Microsoft; план и бриф — в `brag-output/`.
 
 ## Подложка-снимок
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>S1 · Полигон эвакуации НПЗ</title>
+<title>Цифровой полигон эвакуации НПЗ</title>
 <meta name="description" content="Цифровой полигон эвакуации НПЗ в остановочный ремонт: агентная симуляция людей, облака H₂S или пожара и ИИ-штаба. Прототип на синтетических данных.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b6c80'/%3E%3Cpath d='M9 22V10h6.5a4 4 0 0 1 0 8H13' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 22l4-4' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -154,7 +154,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* S1 · Полигон эвакуации. Светлая тема — «лист в раме», тёмная — «ситуационный центр».
+/* Полигон эвакуации НПЗ. Светлая тема — «лист в раме», тёмная — «ситуационный центр».
    Сетка: сайдбар 232 + лист (инсет 8 справа и снизу). Внутри листа отступ 24, один зазор 16 по всем рядам. */
 :root{
   --frame:#f1f4f2; --surface:#ffffff; --raised:#f6f8f7; --active:#e6ebe8; --border:#e2e7e4; --rule:#edf0ee; --control:#c8cfcb;
@@ -621,7 +621,7 @@ pre.code{margin:0;padding:10px 14px;font-family:var(--mono);font-size:12px;line-
   <aside class="side" id="side" aria-label="Навигация">
     <div class="brand">
       <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7"/><path d="M9 22V10h6.5a4 4 0 0 1 0 8H13" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 22l4-4" stroke-width="2.6" stroke-linecap="round"/></svg>
-      <div class="brand-t"><b>S1 · Полигон эвакуации</b><span>КМГ · ОЗТОС</span></div>
+      <div class="brand-t"><b>Полигон эвакуации НПЗ</b><span>КМГ · ОЗТОС</span></div>
     </div>
     <button class="proj" type="button" id="projBtn" aria-haspopup="menu">
       <span class="proj-t"><b id="projName">Ремонт АВТ-3 · 2026</b><span id="projSub">НПЗ «Демо» · площадка v3</span></span>
@@ -2274,7 +2274,7 @@ const Shell = {
     UI.closeMenu(); this.cur = { id, h, args: parts.slice(1) }; this.renderNav();
     const el = $('#view'); const scr = Screens[id] || Screens.overview;
     const navItem = NAV.flatMap(g => g.items).find(i => i[0] === id); $('#topTitle').textContent = navItem ? navItem[1] : id === 'admin' ? 'Администрирование' : '';
-    document.title = (navItem ? navItem[1] : id === 'admin' ? 'Администрирование' : 'Обзор') + ' · S1 Полигон эвакуации';
+    document.title = (navItem ? navItem[1] : id === 'admin' ? 'Администрирование' : 'Обзор') + ' · Полигон эвакуации НПЗ';
     const ok = id === 'admin' ? (Store.s.user.role === 'admin' || Store.s.user.role === 'eng') : allowed(id);
     if (!ok) { UI.locked(el, scr.need || ''); return }
     el.scrollTop = 0; Musters.apply(); const r = scr.render(el, this.cur.args); if (typeof r === 'function') this.cleanup = r;
@@ -3234,7 +3234,7 @@ Screens.admin = {
     if (tab === 'backup') {
       body.innerHTML = `<section class="card"><div class="card-h"><h2>Резервные копии проекта</h2><span class="meta">раз в сутки, ${esc(S.settings.backupAt)}</span></div><div class="card-b"><p class="lead">Копия содержит площадку, ограждения, правила ПЛА, сценарии, прогоны, пакеты, сверку и журнал аудита.</p><div class="actions"><button class="btn primary" type="button" id="bkD">${ic('down')}Скачать копию сейчас</button><label class="btn">${ic('up')}Восстановить из файла<input type="file" accept=".json" hidden id="bkU"></label><button class="btn danger" type="button" id="bkR">Сбросить к демо-данным</button></div></div></section>`;
       $('#bkD').onclick = () => { S.settings.backupAt = U.stamp(); Store.audit('Резервная копия', S.project.id, 'выгружена вручную'); Store.save(); U.download(`s1_backup_${S.project.id}.json`, JSON.stringify(S), 'application/json') };
-      $('#bkU').onchange = async e => { const f = e.target.files[0]; if (!f) return; try { const j = JSON.parse(await U.readFile(f)); if (j.v !== 3 || !j.project) throw new Error(); if (!await UI.confirm(`Восстановить проект из ${esc(f.name)}? Текущие данные будут заменены.`, 'Восстановить', true)) return; Store.s = j; Store.audit('Восстановление', j.project.id, f.name); Store.save(); UI.toast('Проект восстановлен'); Shell.route(true) } catch (err) { UI.toast('Это не копия проекта S1') } };
+      $('#bkU').onchange = async e => { const f = e.target.files[0]; if (!f) return; try { const j = JSON.parse(await U.readFile(f)); if (j.v !== 3 || !j.project) throw new Error(); if (!await UI.confirm(`Восстановить проект из ${esc(f.name)}? Текущие данные будут заменены.`, 'Восстановить', true)) return; Store.s = j; Store.audit('Восстановление', j.project.id, f.name); Store.save(); UI.toast('Проект восстановлен'); Shell.route(true) } catch (err) { UI.toast('Это не копия проекта полигона') } };
       $('#bkR').onclick = async () => { if (await UI.confirm('Сбросить проект к исходным демо-данным?', 'Сбросить', true)) { Store.reset(); UI.toast('Демо-данные восстановлены'); Shell.route(true) } };
     }
     if (tab === 'api') {

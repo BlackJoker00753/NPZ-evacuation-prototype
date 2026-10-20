@@ -252,7 +252,7 @@ const Shell = {
     UI.closeMenu(); this.cur = { id, h, args: parts.slice(1) }; this.renderNav();
     const el = $('#view'); const scr = Screens[id] || Screens.overview;
     const navItem = NAV.flatMap(g => g.items).find(i => i[0] === id); $('#topTitle').textContent = navItem ? navItem[1] : id === 'admin' ? 'Администрирование' : '';
-    document.title = (navItem ? navItem[1] : id === 'admin' ? 'Администрирование' : 'Обзор') + ' · S1 Полигон эвакуации';
+    document.title = (navItem ? navItem[1] : id === 'admin' ? 'Администрирование' : 'Обзор') + ' · Полигон эвакуации НПЗ';
     const ok = id === 'admin' ? (Store.s.user.role === 'admin' || Store.s.user.role === 'eng') : allowed(id);
     if (!ok) { UI.locked(el, scr.need || ''); return }
     el.scrollTop = 0; Musters.apply(); const r = scr.render(el, this.cur.args); if (typeof r === 'function') this.cleanup = r;
