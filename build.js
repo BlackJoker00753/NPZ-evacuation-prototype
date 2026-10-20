@@ -19,4 +19,11 @@ fs.writeFileSync(out, html);
 // для хостинга (Render, GitHub Pages): тот же файл как public/index.html
 fs.mkdirSync(path.join(__dirname, 'public'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'public', 'index.html'), html);
+// презентация: deck.src.html + шрифты → presentation/index.html, затем копия в public/presentation (без черновых файлов)
+const deckDir = path.join(__dirname, 'presentation');
+if (fs.existsSync(path.join(deckDir, 'deck.src.html'))) {
+  const deck = fs.readFileSync(path.join(deckDir, 'deck.src.html'), 'utf8').replace('/*FONTS*/', () => fs.readFileSync(path.join(deckDir, 'assets', 'fonts.css'), 'utf8'));
+  fs.writeFileSync(path.join(deckDir, 'index.html'), deck);
+  fs.cpSync(deckDir, path.join(__dirname, 'public', 'presentation'), { recursive: true, filter: p => { const rel = path.relative(deckDir, p).split(path.sep); return !rel.includes('shots') && !p.endsWith('.mjs') && !p.endsWith('deck.src.html') } });
+}
 console.log('built', path.basename(out), (html.length / 1024).toFixed(0) + ' KB:', order.join(', '), ortho ? '+ orthophoto' : '(без снимка)');

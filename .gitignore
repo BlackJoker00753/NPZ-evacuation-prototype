@@ -13,3 +13,12 @@ e2e.mjs
 mustest.mjs
 make-guide.mjs
 *.log
+# презентация: черновые снимки и скрипты проверки
+presentation/shots/
+presentation/*.mjs
+# видео brag: в репозитории только план, бриф, подпись и обложка; готовый ролик — presentation/assets/demo.mp4
+brag-output/*
+!brag-output/brag-plan.md
+!brag-output/composition-brief.md
+!brag-output/share-copy.txt
+!brag-output/brag.jpg

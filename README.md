@@ -4,6 +4,12 @@
 
 **Все данные синтетические:** площадка, люди, подрядчики, наряды, метео и учение вымышлены. Снимок площадки сгенерирован. Модель служит для сравнения вариантов и тренировки, а не для инженерного расчёта зон поражения.
 
+## Ссылки
+
+- Прототип: https://npz-evacuation-prototype.onrender.com
+- Презентация для конкурса: https://npz-evacuation-prototype.onrender.com/presentation/ (листается стрелками, F — полный экран)
+- Демо-видео (66 с, озвучка): https://npz-evacuation-prototype.onrender.com/presentation/assets/demo.mp4
+
 ## Как открыть
 
 Готовый файл — `evakuaciya-npz.html`: откройте его в браузере. Он работает без сервера и без интернета; шрифты, движок, данные и снимок встроены.
@@ -42,6 +48,10 @@ node build.js
 ## Хостинг
 
 `render.yaml` описывает статический сайт для Render: Dashboard → New → Blueprint → этот репозиторий. Render выполнит `node build.js` и опубликует папку `public`.
+
+## Презентация и видео
+
+`presentation/deck.src.html` — исходник презентации; `node build.js` собирает `presentation/index.html` и копирует её в `public/presentation/`. Ролик `presentation/assets/demo.mp4` собран из живых кадров прототипа в Hyperframes, озвучка — нейросетевой голос Microsoft; план и бриф — в `brag-output/`.
 
 ## Подложка-снимок
 

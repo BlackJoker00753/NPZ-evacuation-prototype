@@ -94,6 +94,8 @@ Screens.sim = {
     $$('[data-ly]', el).forEach(c => c.onchange = () => { mv.layers[c.dataset.ly] = c.checked; mv.plT = -99; mv.dirty = true; mv.draw() });
     const key = e => { if (e.target.closest('input,select,textarea')) return; if (e.code === 'Space') { e.preventDefault(); $('#bPlay').click() } }; document.addEventListener('keydown', key);
     reset(); mv.size(); cmp();
+    // пульт для покадровой записи демо-ролика: модель идёт ровно на заданное время
+    window.__S1 = { get sim() { return sim }, mv, advance(sec) { playing = false; sim.runTo(Math.min(TEND, sim.t + sec)); mv.plT = -99; mv.draw(); side(true) } };
     return () => { dead = true; playing = false; cancelAnimationFrame(raf); mv.destroy(); document.removeEventListener('keydown', key) };
   },
 };

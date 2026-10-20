@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S1 · Цифровой полигон эвакуации НПЗ — презентация</title>
+<style>
+/*FONTS*/
+:root{--ink:#0e1621;--muted:#4a5563;--line:#e3e7ec;--paper:#ffffff;--soft:#f3f6f9;--kmg:#00a3e0;--kmg-ink:#0a6e98;--navy:#0b2a4a;--night:#0c0d10;--night-2:#15161b;--night-line:#2a2b31;--on-night:#f4f4f5;--on-night-2:#b4b6bb;--haz:#d6304b;--haz-n:#f0566f;--fix:#1b6c80;--ok:#1e7b4f}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#050608;overflow:hidden}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+::selection{background:var(--kmg);color:#fff}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+.slide{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1),visibility 0s .55s;transform:scale(.985)}
+.slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1),visibility 0s}
+.light{background:var(--paper);color:var(--ink)}
+.dark{background:var(--night);color:var(--on-night)}
+[data-a]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.on [data-a]{opacity:1;transform:none}
+.pad{position:absolute;inset:0;padding:110px 120px 120px}
+.top{position:absolute;left:120px;right:120px;top:52px;display:flex;justify-content:space-between;align-items:center;font-size:22px;color:var(--muted)}
+.dark .top{color:var(--on-night-2)}
+.top img{height:58px;width:auto}
+.num{position:absolute;right:120px;bottom:46px;font-size:22px;color:var(--muted);font-variant-numeric:tabular-nums}
+.dark .num{color:var(--on-night-2)}
+h1{font-size:96px;font-weight:600;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
+h2{font-size:68px;font-weight:600;letter-spacing:-.02em;line-height:1.06;text-wrap:balance;max-width:1600px}
+h3{font-size:34px;font-weight:600;line-height:1.2}
+p{font-size:30px;line-height:1.45}
+.lead{font-size:36px;line-height:1.4;color:var(--muted);max-width:1500px}
+.dark .lead{color:var(--on-night-2)}
+.k{color:var(--kmg-ink)}.dark .k{color:var(--kmg)}
+.haz{color:var(--haz)}.dark .haz{color:var(--haz-n)}
+.tab{font-variant-numeric:tabular-nums}
+/* 1. титул */
+.title-l{position:absolute;left:0;top:0;bottom:0;width:980px;padding:90px 110px 90px 120px;display:flex;flex-direction:column;background:#fff}
+.title-l img{width:420px;height:auto}
+.title-l h1{margin-top:auto;font-size:84px}
+.title-l .lead{margin-top:34px;font-size:32px}
+.title-l .meta{margin-top:auto;padding-top:46px;font-size:24px;color:var(--muted);line-height:1.5}
+.title-r{position:absolute;left:980px;top:0;right:0;bottom:0;overflow:hidden}
+.title-r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:drift 24s ease-in-out infinite alternate}
+.title-r svg{position:absolute;inset:0}
+@keyframes drift{from{transform:scale(1.08) translate(-1%,0)}to{transform:scale(1.18) translate(-4%,-2%)}}
+/* фон-снимок для тёмных слайдов */
+.bgimg{position:absolute;inset:0;background:url(assets/img/ortho.jpg) center/cover;opacity:.22}
+/* строки проблемы */
+.rows{margin-top:56px;display:grid;gap:4px;max-width:1500px}
+.row{display:grid;grid-template-columns:440px 1fr;gap:40px;padding:22px 0;border-top:1px solid var(--night-line);font-size:32px;line-height:1.35}
+.row b{font-weight:600}
+.row span{color:var(--on-night-2)}
+/* три колонки */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:72px}
+.card{background:var(--soft);border-radius:18px;padding:48px 46px 56px}
+.card h3{margin-bottom:16px}
+.card p{font-size:30px;line-height:1.45;color:var(--muted)}
+.dark .card{background:var(--night-2)}
+.dark .card p{color:var(--on-night-2)}
+.statement{margin-top:56px;font-size:40px;font-weight:600;line-height:1.3;max-width:1550px;padding-left:0}
+/* схема решения */
+.flow{display:grid;grid-template-columns:1fr 70px 1.25fr 70px 1fr;align-items:stretch;margin-top:58px}
+.flow .col{background:var(--soft);border-radius:18px;padding:34px 36px}
+.flow .col.mid{background:var(--navy);color:#fff}
+.flow .col h3{font-size:28px;color:var(--kmg-ink);margin-bottom:18px;font-weight:600}
+.flow .col.mid h3{color:#7fd3f2}
+.flow ul{list-style:none;display:grid;gap:16px}
+.flow li{font-size:27px;line-height:1.35}
+.flow li small{display:block;font-size:22px;color:var(--muted);margin-top:2px}
+.flow .col.mid li small{color:#b9c8da}
+.arrow{display:flex;align-items:center;justify-content:center}
+.arrow svg{width:46px;height:46px}
+.note{margin-top:36px;font-size:26px;color:var(--muted)}
+.dark .note{color:var(--on-night-2)}
+/* видео */
+.vid{position:absolute;left:240px;top:200px;width:1440px;height:810px;border-radius:18px;overflow:hidden;background:#000;border:1px solid var(--night-line)}
+.vid video{width:100%;height:100%;display:block;background:#000}
+/* итог */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.trio .t{background:var(--night-2);border-radius:20px;padding:30px 40px 34px}
+.trio .n{font-size:160px;font-weight:600;line-height:.9;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.trio .l{margin-top:22px;font-size:30px;line-height:1.3}
+.trio .s{margin-top:8px;font-size:24px;color:var(--on-night-2)}
+table{border-collapse:collapse;width:100%;font-size:25px;margin-top:26px}
+th{font-weight:400;color:var(--on-night-2);text-align:left;padding:12px 16px;font-size:22px}
+td{padding:10px 16px;border-top:1px solid var(--night-line)}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+.light th{color:var(--muted)}.light td{border-top-color:var(--line)}
+/* инсайты и вклад мер */
+.two{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;margin-top:56px}
+.ins{display:grid;gap:30px}
+.ins div{font-size:30px;line-height:1.38}
+.ins b{font-weight:600}
+.bars{display:grid;gap:22px}
+.bar{display:grid;grid-template-columns:1fr;gap:8px}
+.bar .h{display:flex;justify-content:space-between;font-size:26px}
+.bar .h b{font-weight:600;font-variant-numeric:tabular-nums}
+.bar .tr{height:16px;border-radius:8px;background:var(--soft);overflow:hidden}
+.bar .tr i{display:block;height:100%;width:0;background:var(--fix);border-radius:8px;transition:width 1.1s cubic-bezier(.2,.7,.2,1) .4s}
+.bar small{font-size:22px;color:var(--muted)}
+/* ОТ: плитки */
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.tile{border:1px solid var(--line);border-radius:18px;padding:32px 36px 36px}
+.tile h3{font-size:30px;margin-bottom:12px}
+.tile p{font-size:27px;color:var(--muted);line-height:1.42}
+.tile .w{font-size:22px;color:var(--kmg-ink);font-weight:500;margin-bottom:14px}
+/* критерии */
+.crit{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.crit .c{border-radius:20px;padding:40px 40px 44px;background:var(--soft)}
+.crit .cn{font-size:26px;font-weight:600;color:#fff;background:var(--kmg-ink);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin-bottom:24px}
+.crit h3{font-size:32px;margin-bottom:18px}
+.crit ul{list-style:none;display:grid;gap:14px}
+.crit li{font-size:28px;line-height:1.4;color:var(--muted);padding-left:24px;position:relative}
+.crit li::before{content:"";position:absolute;left:0;top:14px;width:10px;height:10px;border-radius:50%;background:var(--kmg)}
+.crit li b{color:var(--ink);font-weight:600}
+/* план */
+.gantt{margin-top:64px;position:relative}
+.weeks{display:grid;grid-template-columns:repeat(16,1fr);gap:6px}
+.weeks i{height:22px;border-radius:5px;background:var(--soft)}
+.weeks i.a{background:#cfe9f5}.weeks i.b{background:#9fd6ee}.weeks i.c{background:#5cbde6}.weeks i.d{background:var(--kmg-ink)}
+.wl{display:grid;grid-template-columns:repeat(16,1fr);gap:6px;margin-top:10px;font-size:20px;color:var(--muted);text-align:center}
+.gates{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:46px}
+.gate{border-top:4px solid var(--kmg-ink);padding-top:20px}
+.gate b{display:block;font-size:28px;font-weight:600}
+.gate span{display:block;font-size:22px;color:var(--kmg-ink);margin:4px 0 10px;font-weight:500}
+.gate p{font-size:26px;color:var(--muted);line-height:1.4}
+.need{margin-top:52px;font-size:27px;color:var(--muted);line-height:1.5}
+.need b{color:var(--ink);font-weight:600}
+/* финал */
+.end-links{margin-top:56px;display:grid;gap:18px;font-size:32px}
+.end-links span{color:var(--muted);display:inline-block;width:200px}
+.end-logo{position:absolute;right:120px;top:90px;width:360px;height:auto}
+/* навигация */
+#bar{position:fixed;left:0;bottom:0;height:4px;background:var(--kmg);width:0;transition:width .4s;z-index:5}
+#hint{position:fixed;right:16px;bottom:14px;font:14px 'IBM Plex Sans',sans-serif;color:#8a8f98;z-index:5;opacity:.75;transition:opacity .4s}
+#nav{position:fixed;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px;z-index:5;opacity:0;transition:opacity .25s}
+body:hover #nav{opacity:1}
+#nav button{font:500 15px 'IBM Plex Sans',sans-serif;border:0;border-radius:999px;padding:8px 16px;background:#20232a;color:#e8eaee;cursor:pointer}
+#nav button:hover{background:#2d313a}
+#nav button:focus-visible{outline:2px solid var(--kmg);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*,[data-a],.slide{transition:none!important;animation:none!important}}
+@media print{html,body{overflow:visible;background:#fff}#stage{position:static;transform:none!important}.slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;width:1920px;height:1080px}[data-a]{opacity:1;transform:none}#bar,#hint,#nav{display:none}}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 -->
+<section class="slide light" data-title="Титул">
+  <div class="title-l">
+    <img src="assets/img/kmg-wide.png" alt="АО НК «КазМунайГаз»" data-a>
+    <h1 data-a>Цифровой полигон эвакуации НПЗ в остановочный ремонт</h1>
+    <p class="lead" data-a>Проверяем план ликвидации аварий до аварии: 1 600 человек, облако H<sub>2</sub>S или пожар и ИИ-штаб в одной модели.</p>
+    <div class="meta" data-a>Конкурс КМГ «Лучшие инновационные идеи и практики в области охраны здоровья, труда и окружающей среды» · 2026<br>Автор: Олжас Райганиев · проект S1</div>
+  </div>
+  <div class="title-r"><img src="assets/img/ortho.jpg" alt="Вид сверху на площадку НПЗ «Демо» (сгенерированный снимок)">
+    <svg viewBox="0 0 940 1080" preserveAspectRatio="none"><defs><radialGradient id="g" cx="0" cy="0" r="1"><stop offset="0" stop-color="#f0566f" stop-opacity=".55"/><stop offset="1" stop-color="#f0566f" stop-opacity="0"/></radialGradient></defs></svg>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide dark" data-title="Проблема">
+  <div class="bgimg"></div>
+  <div class="top"><span>Проблема</span></div>
+  <div class="pad">
+    <h2 data-a>В остановочный ремонт ПЛА работает в условиях, под которые его не писали</h2>
+    <div class="rows">
+      <div class="row" data-a><b>Людей в разы больше</b><span>1 600 на площадке, большинство — подрядчики, многие впервые и не знают свой пункт сбора</span></div>
+      <div class="row" data-a><b>Другая планировка</b><span>Ограждения, леса и техника закрывают проходы — у зоны остаётся один выход</span></div>
+      <div class="row" data-a><b>Выход медленнее</b><span>В аппаратах, на лесах и в шумных зонах тревогу слышат позже</span></div>
+      <div class="row" data-a><b>Жёсткие пункты сбора</b><span class="">При неблагоприятном ветре люди идут по ПЛА <span class="haz">через облако H<sub>2</sub>S</span></span></div>
+      <div class="row" data-a><b>Медленный учёт</b><span>Бумажная отметка собирает очереди; штаб долго не знает, кого не досчитались</span></div>
+    </div>
+  </div>
+  <div class="num">2 / 12</div>
+</section>
+
+<!-- 3 -->
+<section class="slide light" data-title="Почему нечем проверить">
+  <div class="top"><span>Почему это не проверить заранее</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="pad">
+    <h2 data-a>Сегодня ПЛА на ремонт проверяют одной погодой и одной расстановкой</h2>
+    <div class="cols">
+      <div class="card" data-a><h3>Полевое учение</h3><p>Одна погода, одна схема ограждений. Останавливает работы, повторить на другом ветре нельзя.</p></div>
+      <div class="card" data-a><h3>Настольное учение штаба</h3><p>Короткий сценарий без реалистичных докладов: штаб не видит, к чему приводят его решения.</p></div>
+      <div class="card" data-a><h3>Симуляторы эвакуации</h3><p>Считают движение людей, но без облака по ветру и без решений штаба.</p></div>
+    </div>
+    <p class="statement" data-a>Связки «облако по ветру + люди по нарядам + решения штаба» для площадки ремонта нет — <span class="k">её и даёт S1</span>.</p>
+  </div>
+  <div class="num">3 / 12</div>
+</section>
+
+<!-- 4 -->
+<section class="slide light" data-title="Решение">
+  <div class="top"><span>Решение</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="pad">
+    <h2 data-a>S1 — настольный полигон: аварию в ремонт можно прожить сотни раз до того, как она случится</h2>
+    <div class="flow">
+      <div class="col" data-a><h3>Данные площадки</h3><ul>
+        <li>Генплан и ограждения ремонта<small>DXF / GeoJSON, даты установки</small></li>
+        <li>Наряды e-PTW и СКУД<small>обезличенно: зона, время, вид работ</small></li>
+        <li>ПЛА как набор правил<small>закрепление ПС, тревога, отсечка</small></li>
+        <li>Метеоархив<small>ветер и класс устойчивости, 3 года</small></li></ul></div>
+      <div class="arrow" data-a><svg viewBox="0 0 24 24" fill="none" stroke="#0a6e98" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="col mid" data-a><h3>Модель</h3><ul>
+        <li>Люди: агент на каждого<small>реакция по виду работ, скорость по плотности, «к своим» в городок</small></li>
+        <li>Облако H₂S или пожар<small>по ветру, смена ветра, отсечка, дозы AEGL-2/3</small></li>
+        <li>ИИ-штаб: РЛА, ГСО, учёт, подрядчики<small>неполная информация, команды из закрытого списка</small></li></ul></div>
+      <div class="arrow" data-a><svg viewBox="0 0 24 24" fill="none" stroke="#0a6e98" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="col" data-a><h3>Результат</h3><ul>
+        <li>Узкие места<small>один выход, ПС под ветром, очереди</small></li>
+        <li>Правки ПЛА с вкладом каждой<small>на тех же людях и погодах</small></li>
+        <li>Тренажёр штаба<small>люди вместо агентов, разбор</small></li>
+        <li>Отчёт для ПБиОТ<small>PDF и DOCX, русский и казахский</small></li></ul></div>
+    </div>
+    <p class="note" data-a>Модель становится основанием для правок ПЛА только после сверки с учебной эвакуацией: расхождение не более 15%.</p>
+  </div>
+  <div class="num">4 / 12</div>
+</section>
+
+<!-- 5 -->
+<section class="slide dark" data-title="Живой показ">
+  <div class="top"><span>Живой показ прототипа · 66 секунд</span><span>npz-evacuation-prototype.onrender.com</span></div>
+  <div class="vid" data-a><video id="demo" src="assets/demo.mp4" poster="assets/demo.jpg" controls preload="metadata" playsinline></video></div>
+  <div class="num">5 / 12</div>
+</section>
+
+<!-- 6 -->
+<section class="slide dark" data-title="Результат">
+  <div class="bgimg" style="opacity:.12"></div>
+  <div class="top"><span>Результат на синтетической площадке · утечка H₂S на Клаусе</span></div>
+  <div class="pad">
+    <h2 data-a>Те же 1 600 человек и та же погода — меняются только правила</h2>
+    <div class="trio">
+      <div class="t" data-a><div class="n" data-count="210">210</div><div class="l">ПЛА как написан</div><div class="s">неучтённые по спискам на 30-й минуте</div></div>
+      <div class="t" data-a><div class="n k" data-count="24">24</div><div class="l">ПЛА с 7 правками</div><div class="s">в 8,8 раза меньше</div></div>
+      <div class="t" data-a><div class="n" style="color:#7fd3f2" data-count="7">7</div><div class="l">Правки + ИИ-штаб</div><div class="s">штаб закрыл ПС-3 под облаком на 2-й минуте</div></div>
+    </div>
+    <table data-a>
+      <tr><th>Сценарий</th><th class="r">Неучтённые: как написан → с правками → + штаб</th><th class="r">Тяжёлая доза: те же три</th></tr>
+      <tr><td>Утечка H₂S на Клаусе</td><td class="r">210 → 24 → 7</td><td class="r">19 → 0 → 0</td></tr>
+      <tr><td>Выброс при вскрытии аппарата на АВТ-3</td><td class="r">269 → 31 → 11</td><td class="r">100 → 0 → 0</td></tr>
+      <tr><td>Утечка со сменой ветра</td><td class="r">210 → 24 → 19</td><td class="r">4 → 18 → 0</td></tr>
+      <tr><td>Пожар пролива у эстакады</td><td class="r">207 → 35 → 8</td><td class="r">21 → 17 → 30</td></tr>
+    </table>
+  </div>
+  <div class="num">6 / 12</div>
+</section>
+
+<!-- 7 -->
+<section class="slide light" data-title="Что показала модель">
+  <div class="top"><span>Что показала модель</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="pad">
+    <h2 data-a>Не все правки одинаково полезны — и правила не заменяют штаб</h2>
+    <div class="two">
+      <div class="ins">
+        <div data-a><b>В 6–9 раз меньше неучтённых</b> с семью правками ПЛА во всех четырёх сценариях.</div>
+        <div data-a><b>На 24 погодах</b> тяжёлые дозы на Клаусе были в 9 вариантах из 24, с правками — в 2; на АВТ-3 — в 6 и 3.</div>
+        <div data-a><b>Смена ветра:</b> ПС, выбранный «по ветру» в момент тревоги, оказался под облаком — тяжёлых доз 4 → 18. Штаб перенаправил людей: 0.</div>
+        <div data-a><b class="haz">Не всё сработало:</b> при пожаре правки и штаб ускорили учёт, но тяжёлых ожогов не убавили (21 → 30). Меры против газа не решают задачу пожара — это тема для пилота.</div>
+      </div>
+      <div data-a>
+        <h3 style="margin-bottom:28px">Вклад каждой правки: минус неучтённых на 15-й минуте, Клаус</h3>
+        <div class="bars">
+          <div class="bar"><div class="h"><span>Электронная отметка на ПС</span><b>−210</b></div><div class="tr"><i data-w="100"></i></div></div>
+          <div class="bar"><div class="h"><span>Инструктаж новичков и обзвон городка</span><b>−94</b></div><div class="tr"><i data-w="45"></i></div></div>
+          <div class="bar"><div class="h"><span>ПС по ветру и резервный ПС-6</span><b>−11</b></div><div class="tr"><i data-w="5.2"></i></div><small>но через облако: 258 → 28 человек</small></div>
+          <div class="bar"><div class="h"><span>Отсечка источника за 6 минут</span><b>−1</b></div><div class="tr"><i data-w="1"></i></div><small>зато доза выше AEGL-2: 61 → 18</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="num">7 / 12</div>
+</section>
+
+<!-- 8 -->
+<section class="slide light" data-title="Охрана труда">
+  <div class="top"><span>Как это работает на охрану труда и промышленную безопасность</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="pad">
+    <h2 data-a>S1 встраивается в процессы ОТ и ПБ, которые уже есть на каждом НПЗ</h2>
+    <div class="grid6">
+      <div class="tile" data-a><div class="w">Работник подрядчика</div><h3>Знает, куда идти</h3><p>Памятка «куда идти при каком ветре» для каждой зоны — на русском и казахском, на вводном инструктаже.</p></div>
+      <div class="tile" data-a><div class="w">Наряд-допуск</div><h3>Люди — из e-PTW</h3><p>Видно, сколько человек в аппаратах и на лесах в момент тревоги и сколько времени им нужно на выход.</p></div>
+      <div class="tile" data-a><div class="w">План ликвидации аварий</div><h3>Правки до остановки</h3><p>Узкие места находятся до установки ограждений, вклад каждой правки — в цифрах.</p></div>
+      <div class="tile" data-a><div class="w">Штаб ликвидации</div><h3>Тренировка без остановки работ</h3><p>Настольное учение на реалистичных докладах и разбор: как решения изменили число неучтённых.</p></div>
+      <div class="tile" data-a><div class="w">Учебная тревога</div><h3>Хронометраж в дело</h3><p>Данные учения становятся проверкой модели, а не формальностью отчёта.</p></div>
+      <div class="tile" data-a><div class="w">Персональные данные</div><h3>Ноль ФИО и ИИН</h3><p>Обезличивание при импорте, работа целиком в контуре КМГ, журнал аудита.</p></div>
+    </div>
+  </div>
+  <div class="num">8 / 12</div>
+</section>
+
+<!-- 9 -->
+<section class="slide light" data-title="Критерии конкурса">
+  <div class="top"><span>Соответствие критериям конкурса</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="pad">
+    <h2 data-a>Три критерия оценки — три ответа проекта</h2>
+    <div class="crit">
+      <div class="c" data-a><div class="cn">1</div><h3>Лидерство в ПБ, ОТ и ОС</h3><ul>
+        <li><b>Проверка до аварии,</b> а не разбор после неё</li>
+        <li>Штаб тренируется на реалистичных докладах</li>
+        <li>ИИ-штаб — тренажёр; решения принимает человек</li></ul></div>
+      <div class="c" data-a><div class="cn">2</div><h3>Тиражирование на группу КМГ</h3><ul>
+        <li><b>Любой НПЗ, ГПЗ, УПН, терминал</b> и крупная площадка ремонта</li>
+        <li>Меняются генплан, люди и ПЛА — модель та же</li>
+        <li>Данные e-PTW, СКУД и метеостанций есть во всех ДЗО; размещение в контуре КМГ</li></ul></div>
+      <div class="c" data-a><div class="cn">3</div><h3>Ценность: риски, инциденты, затраты</h3><ul>
+        <li><b>−186 неучтённых</b> на 30-й минуте; тяжёлые дозы на погодах 9 → 2 из 24</li>
+        <li>Узкие места находятся до установки ограждений</li>
+        <li>Часть полевых учений заменяется настольными; правки внедряются до ремонта</li></ul></div>
+    </div>
+  </div>
+  <div class="num">9 / 12</div>
+</section>
+
+<!-- 10 -->
+<section class="slide light" data-title="Внедрение">
+  <div class="top"><span>Внедрение</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="pad">
+    <h2 data-a>MVP за 16 недель на одной установке, с решением на каждых воротах</h2>
+    <div class="gantt" data-a>
+      <div class="weeks"><i class="a"></i><i class="a"></i><i class="a"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="d"></i><i class="d"></i></div>
+      <div class="wl"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
+    </div>
+    <div class="gates">
+      <div class="gate" data-a><b>Ворота 0 · данные</b><span>неделя 3</span><p>Генплан, ограждения, ПЛА, выгрузки e-PTW и СКУД, метеоархив; дата учения</p></div>
+      <div class="gate" data-a><b>Ворота 1 · ядро</b><span>неделя 9</span><p>2 000 агентов за 2 минуты, эталонные геометрии ≤ 10%, ИИ-штаб: 100% валидных команд</p></div>
+      <div class="gate" data-a><b>Ворота 2 · учение</b><span>неделя 14</span><p>Учебная эвакуация сверена ≤ 15%, настольное учение штаба, узкие места на экспертизе</p></div>
+      <div class="gate" data-a><b>Ворота 3 · решение</b><span>неделя 16</span><p>Критерии приёмки оценены, итоговый отчёт, решение о тиражировании</p></div>
+    </div>
+    <p class="need" data-a><b>От ДЗО:</b> генплан пилотной установки, график ремонта, действующий ПЛА, обезличенные выгрузки e-PTW и СКУД, метеоархив за 3 года, дата учебной эвакуации, сервер в контуре и контакты ПБиОТ, разработчика ПЛА и ГСО.</p>
+  </div>
+  <div class="num">10 / 12</div>
+</section>
+
+<!-- 11 -->
+<section class="slide dark" data-title="Безопасность и ограничения">
+  <div class="top"><span>Безопасность и честные ограничения</span></div>
+  <div class="pad">
+    <h2 data-a>Инструмент сравнения вариантов и тренажёр — не прогноз и не автопилот</h2>
+    <div class="cols" style="grid-template-columns:1fr 1fr">
+      <div class="card" data-a><h3>Работает внутри контура КМГ</h3><p style="margin-top:6px">On-prem в ЦОД ДЗО, локальная языковая модель с открытыми весами, без облачных API. ФИО и ИИН в систему не попадают. Журнал аудита всех прогонов и решений штаба. Один seed — одинаковый результат.</p></div>
+      <div class="card" data-a><h3>Что модель не делает</h3><p style="margin-top:6px">Не заменяет декларацию промбезопасности и сертифицированное ПО расчёта зон. Не управляет реальной эвакуацией. Минуты для ПЛА берутся только после сверки с учением; ИИ-штаб на аварии решений не принимает.</p></div>
+    </div>
+    <p class="note" data-a>В прототипе все данные синтетические: площадка, люди, подрядчики, наряды, погода и учение вымышлены, снимок площадки сгенерирован.</p>
+  </div>
+  <div class="num">11 / 12</div>
+</section>
+
+<!-- 12 -->
+<section class="slide light" data-title="Предложение">
+  <img class="end-logo" src="assets/img/kmg-wide.png" alt="АО НК «КазМунайГаз»" data-a>
+  <div class="pad" style="padding-top:240px">
+    <h1 data-a style="max-width:1450px">Пилот S1 на одной установке в ближайший остановочный ремонт</h1>
+    <p class="lead" data-a style="margin-top:36px">Правки ПЛА — до аварии, а не после.</p>
+    <div class="end-links" data-a>
+      <div><span>Прототип</span><b class="k">npz-evacuation-prototype.onrender.com</b></div>
+      <div><span>Код</span><b>github.com/BlackJoker00753/NPZ-evacuation-prototype</b></div>
+      <div><span>Автор</span><b>Олжас Райганиев</b></div>
+    </div>
+  </div>
+  <div class="num">12 / 12</div>
+</section>
+
+</div>
+<div id="bar"></div>
+<div id="hint">← → листать · F — полный экран</div>
+<div id="nav"><button type="button" id="prev" aria-label="Назад">Назад</button><button type="button" id="fs">Полный экран</button><button type="button" id="next" aria-label="Дальше">Дальше</button></div>
+<script>
+const slides = [...document.querySelectorAll('.slide')], stage = document.getElementById('stage'), video = document.getElementById('demo');
+let cur = 0;
+function fit() { const k = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `scale(${k}) translate(-50%,-50%)`; stage.style.transformOrigin = '0 0' }
+function count(el) { const to = +el.dataset.count, t0 = performance.now(), d = 1100; const step = now => { const p = Math.min(1, (now - t0) / d), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(to * e).toLocaleString('ru-RU'); if (p < 1) requestAnimationFrame(step) }; if (matchMedia('(prefers-reduced-motion: reduce)').matches) el.textContent = to; else requestAnimationFrame(step) }
+function show(n) {
+  n = Math.max(0, Math.min(slides.length - 1, n)); const prev = slides[cur]; cur = n; const s = slides[n];
+  slides.forEach(x => x.classList.toggle('on', x === s));
+  s.querySelectorAll('[data-a]').forEach((el, i) => el.style.transitionDelay = (s.classList.contains('on') ? 120 + i * 85 : 0) + 'ms');
+  s.querySelectorAll('[data-count]').forEach(count);
+  slides.forEach(x => x.querySelectorAll('.bar i').forEach(i => i.style.width = x === s ? i.dataset.w + '%' : '0'));
+  if (video) { if (s.contains(video)) { video.play().catch(() => {}) } else if (!video.paused) video.pause() }
+  document.getElementById('bar').style.width = (100 * (n + 1) / slides.length) + '%';
+  history.replaceState(null, '', '#' + (n + 1)); document.title = (n + 1) + ' · ' + s.dataset.title + ' — S1';
+}
+addEventListener('resize', fit); fit();
+addEventListener('keydown', e => { if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { if (e.target === video && e.key === ' ') return; e.preventDefault(); show(cur + 1) } else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1) } else if (e.key === 'Home') show(0); else if (e.key === 'End') show(slides.length - 1); else if (e.key.toLowerCase() === 'f' || e.key.toLowerCase() === 'а') toggleFs() });
+function toggleFs() { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}) }
+document.getElementById('next').onclick = () => show(cur + 1); document.getElementById('prev').onclick = () => show(cur - 1); document.getElementById('fs').onclick = toggleFs;
+let tx = null; addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true }); addEventListener('touchend', e => { if (tx == null) return; const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) show(cur + (d < 0 ? 1 : -1)); tx = null });
+setTimeout(() => document.getElementById('hint').style.opacity = 0, 5000);
+show((parseInt(location.hash.slice(1), 10) || 1) - 1);
+</script>
+</body>
+</html>
