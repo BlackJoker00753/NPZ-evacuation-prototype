@@ -122,6 +122,68 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .crit li{font-size:28px;line-height:1.4;color:var(--muted);padding-left:24px;position:relative}
 .crit li::before{content:"";position:absolute;left:0;top:14px;width:10px;height:10px;border-radius:50%;background:var(--kmg)}
 .crit li b{color:var(--ink);font-weight:600}
+.dark .crit .c{background:var(--night-2)}
+.dark .crit h3{color:var(--on-night)}
+.dark .crit li{color:var(--on-night-2)}.dark .crit li b{color:var(--on-night)}
+.dark .crit .cn{background:var(--kmg)}
+.crit.q h3{font-size:28px;line-height:1.3;min-height:148px}
+/* критерий 1 */
+.trio.hse .t{padding:30px 38px 34px}
+.trio .w{font-size:22px;font-weight:500;color:var(--kmg);margin-bottom:12px;letter-spacing:.01em}
+.n2{font-size:104px;font-weight:600;line-height:1;letter-spacing:-.04em;white-space:nowrap}
+.n2 em{font-style:normal;font-weight:400;color:var(--on-night-2);font-size:.6em;vertical-align:.18em;margin:0 .06em}
+.hse-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:26px}
+.hse-row div{border-top:1px solid var(--night-line);padding-top:18px;font-size:26px;line-height:1.4}
+.hse-row b{display:block;font-weight:600;margin-bottom:4px}
+.hse-row span{color:var(--on-night-2)}
+/* критерий 2 */
+.rep{display:grid;grid-template-columns:640px 1fr;gap:36px;margin-top:44px}
+.rep-l{display:grid;gap:18px;align-content:start}
+.rep-box{border-radius:18px;padding:26px 32px 28px}
+.rep-box.keep{background:var(--navy);color:#fff}
+.rep-box.load{background:var(--soft)}
+.rep-box h3{font-size:24px;margin-bottom:12px;color:var(--kmg-ink)}
+.rep-box.keep h3{color:#7fd3f2}
+.rep-box ul{list-style:none;display:grid;gap:7px}
+.rep-box li{font-size:24px;line-height:1.35}
+.rep-box li small{font-size:20px;color:var(--muted);margin-left:6px}
+.rep-r{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rep-r .tile{padding:24px 30px 26px}
+.rep-r .tile h3{font-size:28px;margin-bottom:8px}
+.rep-r .tile p{font-size:23px;line-height:1.4}
+.rep-r .tile .w{font-size:19px;margin-bottom:10px}
+.steps{display:grid;grid-template-columns:repeat(3,auto) 1fr;gap:0 34px;align-items:end;margin-top:30px;border-top:4px solid var(--kmg-ink);padding-top:18px}
+.steps b{display:block;font-size:24px;font-weight:600}
+.steps span{display:block;font-size:20px;color:var(--muted);margin-top:2px}
+.steps p{font-size:22px;line-height:1.35;text-align:right;color:var(--muted)}
+.steps p b{display:inline;font-size:inherit;color:var(--ink)}
+.steps p i{font-style:normal;font-size:20px;display:block}
+/* критерий 3: калькулятор */
+.calc{display:grid;grid-template-columns:1fr 1fr 600px;gap:34px;margin-top:34px}
+.cg h3{font-size:24px;display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.cg h3 i{font-style:normal;font-size:18px;font-weight:600;color:#fff;background:var(--kmg-ink);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none}
+.sl{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:0 16px;padding:9px 0 3px;border-top:1px solid var(--line);cursor:pointer}
+.sl span{font-size:21px;color:var(--muted);line-height:1.3}
+.sl b{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.sl input{grid-column:1/-1;width:100%;height:30px;accent-color:var(--kmg-ink);cursor:pointer}
+.sl input:focus-visible{outline:2px solid var(--kmg);outline-offset:2px;border-radius:4px}
+.res{background:var(--navy);color:#fff;border-radius:20px;padding:30px 36px 30px;display:flex;flex-direction:column}
+.res .rl{font-size:22px;color:#b9c8da}
+.res .big{font-size:120px;font-weight:600;letter-spacing:-.04em;line-height:1;margin:8px 0 18px;color:#7fd3f2}
+.res .big small{font-size:30px;font-weight:500;letter-spacing:0;margin-left:14px;color:#fff}
+.rb{margin-bottom:12px}
+.rb div{display:flex;justify-content:space-between;font-size:21px;color:#d5deea}
+.rb b{font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.rb i{display:block;height:8px;border-radius:4px;background:rgba(255,255,255,.12);margin-top:6px;overflow:hidden}
+.rb em{display:block;height:100%;background:#7fd3f2;border-radius:4px;transition:width .35s cubic-bezier(.2,.7,.2,1)}
+.r3{margin:10px 0 18px;border-top:1px solid rgba(255,255,255,.18);padding-top:12px;display:grid;gap:7px}
+.r3 div{display:flex;justify-content:space-between;gap:16px;font-size:21px;color:#d5deea}
+.r3 b{color:#fff;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.r3 .tot{font-size:26px;color:#fff}.r3 .tot b{color:#7fd3f2}
+#calc-reset{margin-top:auto;align-self:flex-start;font:500 19px 'IBM Plex Sans',sans-serif;color:#d5deea;background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:8px 18px;cursor:pointer}
+#calc-reset:hover{background:rgba(255,255,255,.08)}
+#calc-reset:focus-visible{outline:2px solid #7fd3f2;outline-offset:2px}
+.cnote{margin-top:22px;font-size:21px;color:var(--muted);line-height:1.45;max-width:1680px}
 /* план */
 .gantt{margin-top:64px;position:relative}
 .weeks{display:grid;grid-template-columns:repeat(16,1fr);gap:6px}
@@ -181,7 +243,7 @@ body:hover #nav{opacity:1}
       <div class="row" data-a><b>Медленный учёт</b><span>Бумажная отметка собирает очереди; штаб долго не знает, кого не досчитались</span></div>
     </div>
   </div>
-  <div class="num">2 / 12</div>
+  <div class="num"></div>
 </section>
 
 <!-- 3 -->
@@ -196,7 +258,7 @@ body:hover #nav{opacity:1}
     </div>
     <p class="statement" data-a>Связки «облако по ветру + люди по нарядам + решения штаба» для площадки ремонта нет — <span class="k">её и даёт S1</span>.</p>
   </div>
-  <div class="num">3 / 12</div>
+  <div class="num"></div>
 </section>
 
 <!-- 4 -->
@@ -224,14 +286,14 @@ body:hover #nav{opacity:1}
     </div>
     <p class="note" data-a>Модель становится основанием для правок ПЛА только после сверки с учебной эвакуацией: расхождение не более 15%.</p>
   </div>
-  <div class="num">4 / 12</div>
+  <div class="num"></div>
 </section>
 
 <!-- 5 -->
 <section class="slide dark" data-title="Живой показ">
   <div class="top"><span>Живой показ прототипа · 66 секунд</span><span>npz-evacuation-prototype.onrender.com</span></div>
   <div class="vid" data-a><video id="demo" src="assets/demo.mp4" poster="assets/demo.jpg" controls preload="metadata" playsinline></video></div>
-  <div class="num">5 / 12</div>
+  <div class="num"></div>
 </section>
 
 <!-- 6 -->
@@ -253,7 +315,7 @@ body:hover #nav{opacity:1}
       <tr><td>Пожар пролива у эстакады</td><td class="r">207 → 35 → 8</td><td class="r">21 → 17 → 30</td></tr>
     </table>
   </div>
-  <div class="num">6 / 12</div>
+  <div class="num"></div>
 </section>
 
 <!-- 7 -->
@@ -279,12 +341,32 @@ body:hover #nav{opacity:1}
       </div>
     </div>
   </div>
-  <div class="num">7 / 12</div>
+  <div class="num"></div>
 </section>
 
-<!-- 8 -->
+<!-- К1 -->
+<section class="slide dark" data-title="Критерий 1 · Здоровье, безопасность, среда">
+  <div class="bgimg" style="opacity:.1"></div>
+  <div class="top"><span>Критерий 1 · Воздействие на здоровье, безопасность труда и окружающую среду</span></div>
+  <div class="pad">
+    <h2 data-a>Меньше людей в облаке, меньше тяжёлых доз, меньше выброс — и всё это до аварии</h2>
+    <div class="trio hse">
+      <div class="t" data-a><div class="w">Здоровье</div><div class="n2 tab">9 <em>→</em> <span class="k">2</span></div><div class="l">погод из 24, при которых есть тяжёлые дозы H₂S</div><div class="s">утечка на Клаусе, ПЛА как написан → с правками; на АВТ-3 — 6 → 3</div></div>
+      <div class="t" data-a><div class="w">Безопасность труда</div><div class="n2 tab">210 <em>→</em> <span class="k">24</span></div><div class="l">неучтённых по спискам на 30-й минуте</div><div class="s">по пути на пункт сбора через облако прошли 258 → 28 человек</div></div>
+      <div class="t" data-a><div class="w">Окружающая среда</div><div class="n2 tab">360 <em>→</em> <span class="k">144</span></div><div class="l">кг H₂S в атмосферу за аварию на Клаусе</div><div class="s">отсечка источника за 6 минут вместо 15: выброс −60%, облако уходит на 9 минут раньше</div></div>
+    </div>
+    <div class="hse-row" data-a>
+      <div><b>Учения без вреда</b><span>Настольное учение вместо полевого: 1 600 человек не стоят на ветру, в жару и мороз, работы в аппаратах не прерываются на полпути.</span></div>
+      <div><b>Профилактика, а не разбор</b><span>Узкие места ПЛА находятся до установки ограждений, а не в акте расследования.</span></div>
+    </div>
+    <p class="note" data-a>Синтетическая площадка, 1 600 человек, одинаковые люди и погода во всех вариантах. Для реальной площадки цифры подтверждаются сверкой с учебной эвакуацией.</p>
+  </div>
+  <div class="num"></div>
+</section>
+
+<!-- ОТ и ПБ -->
 <section class="slide light" data-title="Охрана труда">
-  <div class="top"><span>Как это работает на охрану труда и промышленную безопасность</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="top"><span>Критерий 1 · Как S1 встраивается в охрану труда и промышленную безопасность</span><img src="assets/img/kmg-wide.png" alt=""></div>
   <div class="pad">
     <h2 data-a>S1 встраивается в процессы ОТ и ПБ, которые уже есть на каждом НПЗ</h2>
     <div class="grid6">
@@ -296,30 +378,114 @@ body:hover #nav{opacity:1}
       <div class="tile" data-a><div class="w">Персональные данные</div><h3>Ноль ФИО и ИИН</h3><p>Обезличивание при импорте, работа целиком в контуре КМГ, журнал аудита.</p></div>
     </div>
   </div>
-  <div class="num">8 / 12</div>
+  <div class="num"></div>
 </section>
 
-<!-- 9 -->
-<section class="slide light" data-title="Критерии конкурса">
-  <div class="top"><span>Соответствие критериям конкурса</span><img src="assets/img/kmg-wide.png" alt=""></div>
+<!-- К2 -->
+<section class="slide light" data-title="Критерий 2 · Тиражирование">
+  <div class="top"><span>Критерий 2 · Повторное моделирование на всех подразделениях КМГ</span><img src="assets/img/kmg-wide.png" alt=""></div>
   <div class="pad">
-    <h2 data-a>Три критерия оценки — три ответа проекта</h2>
-    <div class="crit">
-      <div class="c" data-a><div class="cn">1</div><h3>Лидерство в ПБ, ОТ и ОС</h3><ul>
-        <li><b>Проверка до аварии,</b> а не разбор после неё</li>
-        <li>Штаб тренируется на реалистичных докладах</li>
-        <li>ИИ-штаб — тренажёр; решения принимает человек</li></ul></div>
-      <div class="c" data-a><div class="cn">2</div><h3>Тиражирование на группу КМГ</h3><ul>
-        <li><b>Любой НПЗ, ГПЗ, УПН, терминал</b> и крупная площадка ремонта</li>
-        <li>Меняются генплан, люди и ПЛА — модель та же</li>
-        <li>Данные e-PTW, СКУД и метеостанций есть во всех ДЗО; размещение в контуре КМГ</li></ul></div>
-      <div class="c" data-a><div class="cn">3</div><h3>Ценность: риски, инциденты, затраты</h3><ul>
-        <li><b>−186 неучтённых</b> на 30-й минуте; тяжёлые дозы на погодах 9 → 2 из 24</li>
-        <li>Узкие места находятся до установки ограждений</li>
-        <li>Часть полевых учений заменяется настольными; правки внедряются до ремонта</li></ul></div>
+    <h2 data-a>Одна модель на все площадки группы: для новой меняются только данные</h2>
+    <div class="rep">
+      <div class="rep-l" data-a>
+        <div class="rep-box keep"><h3>Не меняется</h3><ul>
+          <li>Движение людей: агент на каждого</li>
+          <li>Облако H₂S, пожар, дозы AEGL</li>
+          <li>ИИ-штаб и тренажёр штаба</li>
+          <li>Каталог сценариев и правок ПЛА</li>
+          <li>Отчёты PDF и DOCX, русский и казахский</li></ul></div>
+        <div class="rep-box load"><h3>Загружается для площадки</h3><ul>
+          <li>Генплан и ограждения <small>DXF / GeoJSON</small></li>
+          <li>ПЛА как набор правил</li>
+          <li>Наряды e-PTW и СКУД <small>обезличенно</small></li>
+          <li>Метеоархив за 3 года</li></ul></div>
+      </div>
+      <div class="rep-r">
+        <div class="tile" data-a><div class="w">Переработка · остановочные ремонты</div><h3>НПЗ группы</h3><p>Атырауский НПЗ, Павлодарский НХЗ, ПКОП (Шымкент): тысячи подрядчиков, H₂S, пожар пролива.</p></div>
+        <div class="tile" data-a><div class="w">Добыча и подготовка нефти</div><h3>Промыслы, УПН, УКПГ</h3><p>Попутный газ с H₂S, вахтовые посёлки, капремонт скважин и установок.</p></div>
+        <div class="tile" data-a><div class="w">Транспорт и хранение</div><h3>НПС и терминалы</h3><p>Резервуарные парки, пролив и пожар, ремонт с большим числом подрядчиков.</p></div>
+        <div class="tile" data-a><div class="w">Любой опасный объект</div><h3>Учения штаба</h3><p>Настольное учение на реалистичных докладах — без остановки производства.</p></div>
+      </div>
+    </div>
+    <div class="steps" data-a>
+      <div><b>1 · Данные</b><span>2–3 недели: выгрузки и генплан</span></div>
+      <div><b>2 · Сверка с учением</b><span>расхождение ≤ 15%</span></div>
+      <div><b>3 · В работе</b><span>правки ПЛА и тренировки штаба</span></div>
+      <p>Новая площадка — <b>4–6 недель</b> вместо 16 недель пилота, без доработки кода <i>(оценка, уточняется на пилоте)</i></p>
     </div>
   </div>
-  <div class="num">9 / 12</div>
+  <div class="num"></div>
+</section>
+
+<!-- К3 -->
+<section class="slide light" data-title="Критерий 3 · Ценность в деньгах">
+  <div class="top"><span>Критерий 3 · Ценность идеи в денежном эквиваленте</span><img src="assets/img/kmg-wide.png" alt=""></div>
+  <div class="pad" style="padding-top:104px">
+    <h2 data-a>Сколько стоит S1 и что он возвращает: посчитайте на своих допущениях</h2>
+    <div class="calc" id="calc">
+      <div class="cg" data-a>
+        <h3><i>A</i>Полевое учение → настольное</h3>
+        <label class="sl"><span>Людей на площадке</span><b data-o="N"></b><input type="range" data-k="N" min="300" max="3000" step="100"></label>
+        <label class="sl"><span>Часов простоя на одно учение</span><b data-o="h"></b><input type="range" data-k="h" min="0.5" max="4" step="0.5"></label>
+        <label class="sl"><span>Стоимость человеко-часа, ₸</span><b data-o="C"></b><input type="range" data-k="C" min="2000" max="15000" step="500"></label>
+        <label class="sl"><span>Учений заменяется за ремонт</span><b data-o="k"></b><input type="range" data-k="k" min="0" max="3" step="1"></label>
+        <h3 style="margin-top:26px"><i>B</i>Быстрый учёт при реальной тревоге</h3>
+        <label class="sl"><span>Тревог с эвакуацией за ремонт</span><b data-o="a"></b><input type="range" data-k="a" min="0" max="6" step="1"></label>
+        <label class="sl"><span>Учёт быстрее на</span><b data-o="dt"></b><input type="range" data-k="dt" min="0" max="45" step="5"></label>
+      </div>
+      <div class="cg" data-a>
+        <h3><i>C</i>Предотвращённый ущерб, ожидаемый</h3>
+        <label class="sl"><span>Вероятность аварии с эвакуацией за ремонт</span><b data-o="p"></b><input type="range" data-k="p" min="0" max="10" step="0.5"></label>
+        <label class="sl"><span>Ущерб при аварии с пострадавшими, млн ₸</span><b data-o="D"></b><input type="range" data-k="D" min="100" max="5000" step="100"></label>
+        <label class="sl"><span>Доля ущерба, которую снимают правки</span><b data-o="r"></b><input type="range" data-k="r" min="0" max="90" step="5"></label>
+        <h3 style="margin-top:26px"><i>₸</i>Масштаб и затраты</h3>
+        <label class="sl"><span>Остановочных ремонтов в группе за год</span><b data-o="n"></b><input type="range" data-k="n" min="1" max="10" step="1"></label>
+        <label class="sl"><span>Пилот, 16 недель, млн ₸</span><b data-o="M"></b><input type="range" data-k="M" min="20" max="200" step="5"></label>
+        <label class="sl"><span>Подключение новой площадки, млн ₸</span><b data-o="T"></b><input type="range" data-k="T" min="5" max="60" step="5"></label>
+        <label class="sl"><span>Сопровождение в год, млн ₸</span><b data-o="S"></b><input type="range" data-k="S" min="0" max="80" step="5"></label>
+      </div>
+      <div class="res" data-a>
+        <div class="rl">Эффект одного ремонта на одной площадке</div>
+        <div class="big tab"><span data-calc="per"></span><small>млн ₸</small></div>
+        <div class="rb"><div><span>A · учения без остановки работ</span><b data-calc="A"></b></div><i><em data-bar="A"></em></i></div>
+        <div class="rb"><div><span>B · простой при тревогах</span><b data-calc="B"></b></div><i><em data-bar="B"></em></i></div>
+        <div class="rb"><div><span>C · ожидаемый ущерб</span><b data-calc="Cv"></b></div><i><em data-bar="Cv"></em></i></div>
+        <div class="r3">
+          <div><span>Группа КМГ за 3 года: эффект</span><b data-calc="eff3"></b></div>
+          <div><span>Затраты: пилот, подключения, сопровождение</span><b data-calc="cost3"></b></div>
+          <div class="tot"><span>Итог за 3 года</span><b data-calc="net3"></b></div>
+          <div><span>Пилот окупается за</span><b data-calc="pb"></b></div>
+        </div>
+        <button type="button" id="calc-reset">Вернуть осторожные допущения</button>
+      </div>
+    </div>
+    <p class="cnote" data-a>Допущения намеренно осторожные и уточняются на пилоте по данным ДЗО. Не учтены сдвиг графика ремонта, недовыработка НПЗ и репутационный ущерб — с ними эффект выше. C — математическое ожидание, а не гарантия.</p>
+  </div>
+  <div class="num"></div>
+</section>
+
+<!-- Сводка -->
+<section class="slide dark" data-title="Ответы на критерии">
+  <div class="top"><span>Ответы на критерии конкурса</span></div>
+  <div class="pad">
+    <h2 data-a>Три вопроса конкурса — три ответа в цифрах</h2>
+    <div class="crit q">
+      <div class="c" data-a><div class="cn">1</div><h3>Как внедрение сократит воздействие на здоровье, безопасность труда и окружающую среду</h3><ul>
+        <li><b>Неучтённых в 8,8 раза меньше:</b> 210 → 24 на 30-й минуте</li>
+        <li><b>Тяжёлые дозы</b> на 24 погодах: 9 → 2 варианта</li>
+        <li><b>Выброс H₂S</b> на Клаусе: 360 → 144 кг при отсечке за 6 минут</li></ul></div>
+      <div class="c" data-a><div class="cn">2</div><h3>Насколько возможно повторное моделирование на всех подразделениях КМГ</h3><ul>
+        <li><b>Модель одна,</b> меняются генплан, ПЛА, наряды и погода</li>
+        <li>НПЗ, промыслы, УПН и УКПГ, НПС и терминалы</li>
+        <li><b>4–6 недель</b> на новую площадку, без доработки кода</li></ul></div>
+      <div class="c" data-a><div class="cn">3</div><h3>Ценность идеи в денежном эквиваленте</h3><ul>
+        <li><b><span data-calc="per"></span> млн ₸</b> эффект одного ремонта на площадке</li>
+        <li><b><span data-calc="net3"></span></b> итог по группе за 3 года после всех затрат</li>
+        <li>Пилот окупается за <b data-calc="pb"></b></li></ul></div>
+    </div>
+    <p class="note" data-a>Цифры 1 — на синтетической площадке; для реальной площадки подтверждаются сверкой с учебной эвакуацией. Цифры 3 — по допущениям калькулятора на предыдущем слайде.</p>
+  </div>
+  <div class="num"></div>
 </section>
 
 <!-- 10 -->
@@ -339,7 +505,7 @@ body:hover #nav{opacity:1}
     </div>
     <p class="need" data-a><b>От ДЗО:</b> генплан пилотной установки, график ремонта, действующий ПЛА, обезличенные выгрузки e-PTW и СКУД, метеоархив за 3 года, дата учебной эвакуации, сервер в контуре и контакты ПБиОТ, разработчика ПЛА и ГСО.</p>
   </div>
-  <div class="num">10 / 12</div>
+  <div class="num"></div>
 </section>
 
 <!-- 11 -->
@@ -353,7 +519,7 @@ body:hover #nav{opacity:1}
     </div>
     <p class="note" data-a>В прототипе все данные синтетические: площадка, люди, подрядчики, наряды, погода и учение вымышлены, снимок площадки сгенерирован.</p>
   </div>
-  <div class="num">11 / 12</div>
+  <div class="num"></div>
 </section>
 
 <!-- 12 -->
@@ -368,7 +534,7 @@ body:hover #nav{opacity:1}
       <div><span>Автор</span><b>Олжас Райганиев</b></div>
     </div>
   </div>
-  <div class="num">12 / 12</div>
+  <div class="num"></div>
 </section>
 
 </div>
@@ -391,10 +557,29 @@ function show(n) {
   history.replaceState(null, '', '#' + (n + 1)); document.title = (n + 1) + ' · ' + s.dataset.title + ' — S1';
 }
 addEventListener('resize', fit); fit();
-addEventListener('keydown', e => { if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { if (e.target === video && e.key === ' ') return; e.preventDefault(); show(cur + 1) } else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1) } else if (e.key === 'Home') show(0); else if (e.key === 'End') show(slides.length - 1); else if (e.key.toLowerCase() === 'f' || e.key.toLowerCase() === 'а') toggleFs() });
+slides.forEach((s, i) => { const el = s.querySelector('.num'); if (el) el.textContent = (i + 1) + ' / ' + slides.length });
+// Калькулятор ценности (критерий 3): все суммы в тенге, на выходе — млн ₸
+const CALC0 = { N: 1600, h: 2, C: 6000, k: 1, a: 2, dt: 15, p: 2, D: 500, r: 50, n: 3, M: 60, T: 15, S: 20 };
+const calc = Object.assign({}, CALC0);
+const mln = (v, d = 1) => (v / 1e6).toLocaleString('ru-RU', { maximumFractionDigits: d, minimumFractionDigits: d });
+const fmtIn = { N: v => v.toLocaleString('ru-RU'), C: v => v.toLocaleString('ru-RU'), h: v => v.toLocaleString('ru-RU'), p: v => v.toLocaleString('ru-RU') + '%', r: v => v + '%', dt: v => v + ' мин' };
+function recalc() {
+  const c = calc, A = c.N * c.h * c.C * c.k, B = c.N * (c.dt / 60) * c.C * c.a, Cv = c.p / 100 * c.D * 1e6 * c.r / 100, per = A + B + Cv;
+  const eff3 = 3 * c.n * per, cost3 = c.M * 1e6 + Math.max(0, c.n - 1) * c.T * 1e6 + 3 * c.S * 1e6, net3 = eff3 - cost3;
+  const pb = per > 0 ? c.M * 1e6 / per : Infinity;
+  const out = { per: mln(per), A: mln(A) + ' млн ₸', B: mln(B) + ' млн ₸', Cv: mln(Cv) + ' млн ₸', eff3: mln(eff3, 0) + ' млн ₸', cost3: '−' + mln(cost3, 0) + ' млн ₸', net3: (net3 >= 0 ? '+' : '−') + mln(Math.abs(net3), 0) + ' млн ₸', pb: isFinite(pb) ? pb.toLocaleString('ru-RU', { maximumFractionDigits: 1 }) + ' ' + (pb <= 1 ? 'ремонт' : pb < 5 ? 'ремонта' : 'ремонтов') : 'не окупается' };
+  document.querySelectorAll('[data-calc]').forEach(el => el.textContent = out[el.dataset.calc]);
+  const mx = Math.max(A, B, Cv, 1); document.querySelectorAll('[data-bar]').forEach(el => el.style.width = (100 * { A, B, Cv }[el.dataset.bar] / mx) + '%');
+  document.querySelectorAll('[data-o]').forEach(el => { const k = el.dataset.o; el.textContent = (fmtIn[k] || String)(calc[k]) });
+}
+function calcSync() { document.querySelectorAll('#calc input[data-k]').forEach(i => i.value = calc[i.dataset.k]); recalc() }
+document.querySelectorAll('#calc input[data-k]').forEach(i => i.addEventListener('input', () => { calc[i.dataset.k] = +i.value; recalc() }));
+document.getElementById('calc-reset').onclick = () => { Object.assign(calc, CALC0); calcSync() };
+calcSync();
+addEventListener('keydown', e => { const tg = e.target; if (tg.tagName === 'INPUT' && !['PageDown', 'PageUp'].includes(e.key)) return; if (tg.id === 'calc-reset' && [' ', 'Enter'].includes(e.key)) return; if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { if (e.target === video && e.key === ' ') return; e.preventDefault(); show(cur + 1) } else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1) } else if (e.key === 'Home') show(0); else if (e.key === 'End') show(slides.length - 1); else if (e.key.toLowerCase() === 'f' || e.key.toLowerCase() === 'а') toggleFs() });
 function toggleFs() { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}) }
 document.getElementById('next').onclick = () => show(cur + 1); document.getElementById('prev').onclick = () => show(cur - 1); document.getElementById('fs').onclick = toggleFs;
-let tx = null; addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true }); addEventListener('touchend', e => { if (tx == null) return; const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) show(cur + (d < 0 ? 1 : -1)); tx = null });
+let tx = null; addEventListener('touchstart', e => tx = e.target.tagName === 'INPUT' ? null : e.touches[0].clientX, { passive: true }); addEventListener('touchend', e => { if (tx == null) return; const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) show(cur + (d < 0 ? 1 : -1)); tx = null });
 setTimeout(() => document.getElementById('hint').style.opacity = 0, 5000);
 show((parseInt(location.hash.slice(1), 10) || 1) - 1);
 </script>

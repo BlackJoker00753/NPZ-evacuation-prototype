@@ -24,6 +24,7 @@ const deckDir = path.join(__dirname, 'presentation');
 if (fs.existsSync(path.join(deckDir, 'deck.src.html'))) {
   const deck = fs.readFileSync(path.join(deckDir, 'deck.src.html'), 'utf8').replace('/*FONTS*/', () => fs.readFileSync(path.join(deckDir, 'assets', 'fonts.css'), 'utf8'));
   fs.writeFileSync(path.join(deckDir, 'index.html'), deck);
+  fs.rmSync(path.join(__dirname, 'public', 'presentation'), { recursive: true, force: true });
   fs.cpSync(deckDir, path.join(__dirname, 'public', 'presentation'), { recursive: true, filter: p => { const rel = path.relative(deckDir, p).split(path.sep); return !rel.includes('shots') && !p.endsWith('.mjs') && !p.endsWith('deck.src.html') } });
 }
 console.log('built', path.basename(out), (html.length / 1024).toFixed(0) + ' KB:', order.join(', '), ortho ? '+ orthophoto' : '(без снимка)');
