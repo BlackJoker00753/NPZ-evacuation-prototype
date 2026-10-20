@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T12:00:00+05:00",
+  "title": "Design System: S1 · Полигон эвакуации НПЗ",
+  "extensions": {
+    "colorMeta": {
+      "frame": { "role": "neutral", "displayName": "Site Green-Grey Frame", "canonical": "#f1f4f2" },
+      "accent": { "role": "primary", "displayName": "Petrol Teal", "canonical": "#1b6c80" },
+      "negative": { "role": "error", "displayName": "Signal Red", "canonical": "#c4242a" },
+      "dark-ground": { "role": "neutral", "displayName": "Situation Room Black", "canonical": "#171719" },
+      "dark-accent": { "role": "primary", "displayName": "Terminal Blue Line", "canonical": "#4a8ad6" }
+    },
+    "typographyMeta": {
+      "title": { "displayName": "Screen title", "purpose": "One h1 per screen, a noun." },
+      "kpi": { "displayName": "Figure", "purpose": "KPI values, tabular." },
+      "id": { "displayName": "Identifier", "purpose": "Run IDs, seeds, hashes, the sim clock only." }
+    },
+    "shadows": [
+      { "name": "float", "value": "0 10px 30px rgba(16,24,20,.14), 0 2px 6px rgba(16,24,20,.06)", "purpose": "Drawer, modal, menu, toast, tour, open mobile sidebar only." },
+      { "name": "float-dark", "value": "0 12px 28px rgba(0,0,0,.45)", "purpose": "Same overlays in the dark theme." }
+    ],
+    "motion": [
+      { "name": "ease-out-panel", "value": "cubic-bezier(.2,.8,.2,1) 200ms", "purpose": "Drawer and sidebar entering." },
+      { "name": "state", "value": "150ms", "purpose": "Hover, pressed, segmented selection." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "1100px", "purpose": "Sidebar becomes a drawer; grids stack." },
+      { "name": "phone", "value": "760px", "purpose": "KPI 2-up, segments wrap, tables scroll in frame." }
+    ],
+    "rules": [
+      "Colour on data, state and the cloud; chrome stays neutral.",
+      "One strategy keeps one colour across every chart and legend.",
+      "The minute strip is the shared timeline for player, journal and trainer.",
+      "Every report carries the limitations block."
+    ]
+  }
+}

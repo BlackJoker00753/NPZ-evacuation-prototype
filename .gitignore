@@ -1,0 +1,15 @@
+# сборка для хостинга (Render собирает сам)
+public/
+node_modules/
+# скриншоты и служебные файлы дизайн-проверок
+shots/
+.taste-skill/
+.impeccable/review/
+.impeccable-brief.md
+.claude/
+# локальные скрипты проверки (используют инструменты с этого компьютера)
+shoot.mjs
+e2e.mjs
+mustest.mjs
+make-guide.mjs
+*.log

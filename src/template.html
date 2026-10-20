@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S1 · Полигон эвакуации НПЗ</title>
+<meta name="description" content="Цифровой полигон эвакуации НПЗ в остановочный ремонт: агентная симуляция людей, облака H₂S или пожара и ИИ-штаба. Прототип на синтетических данных.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b6c80'/%3E%3Cpath d='M9 22V10h6.5a4 4 0 0 1 0 8H13' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 22l4-4' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('s1.theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}catch(e){}</script>
+<style>
+/*FONTS*/
+/*STYLE*/
+</style>
+</head>
+<body>
+<a class="skip" href="#view">К содержимому</a>
+<div class="app" id="app">
+  <aside class="side" id="side" aria-label="Навигация">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7"/><path d="M9 22V10h6.5a4 4 0 0 1 0 8H13" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 22l4-4" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <div class="brand-t"><b>S1 · Полигон эвакуации</b><span>КМГ · ОЗТОС</span></div>
+    </div>
+    <button class="proj" type="button" id="projBtn" aria-haspopup="menu">
+      <span class="proj-t"><b id="projName">Ремонт АВТ-3 · 2026</b><span id="projSub">НПЗ «Демо» · площадка v3</span></span>
+      <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 6.5 8 3.5l3 3M5 9.5l3 3 3-3"/></svg>
+    </button>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot" id="sideFoot"></div>
+  </aside>
+  <header class="top" id="top">
+    <button class="menu-btn" type="button" id="menuBtn" aria-label="Меню"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></svg></button>
+    <span class="top-title" id="topTitle"></span>
+    <button class="search" type="button" id="searchBtn"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><span>Перейти к экрану или действию</span><kbd>Ctrl K</kbd></button>
+    <div class="top-r">
+      <button class="chip-btn" type="button" id="llmBtn" title="Статус языковой модели ИИ-штаба"></button>
+      <button class="icon-btn" type="button" id="themeBtn" aria-label="Переключить тему"></button>
+      <button class="user" type="button" id="userBtn" aria-haspopup="menu"></button>
+    </div>
+  </header>
+  <main class="sheet" id="view" tabindex="-1"></main>
+</div>
+<div class="scrim" id="scrim" hidden></div>
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+<div id="layer"></div>
+<script id="src-engine">
+/*ENGINE*/
+</script>
+<script>
+/*SCRIPTS*/
+</script>
+</body>
+</html>
